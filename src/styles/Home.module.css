@@ -86,6 +86,11 @@
   width: 480px;
   height: 360px;
   margin-left: -400px;
+  content: '';
+  left: 50%;
+  position: absolute;
+  filter: blur(45px);
+  transform: translateZ(0);
 }
 
 .center::after {
@@ -93,10 +98,6 @@
   width: 240px;
   height: 180px;
   z-index: -1;
-}
-
-.center::before,
-.center::after {
   content: '';
   left: 50%;
   position: absolute;
@@ -132,7 +133,3 @@
 
 /* Conic Gradient Animation */
 .thirteen::before {
-  animation: 6s rotate linear infinite;
-  width: 200%;
-  height: 200%;
-  background: var(--
