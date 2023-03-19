@@ -136,7 +136,7 @@ export default function AccessControl() {
               onClick={() => handleCopy()}
               className="btn btn-outline-danger"
             >
-              Share 📁
+              SHARE 📁
             </button>
           ) : null}
           {createdStream || flag ? (
@@ -144,7 +144,7 @@ export default function AccessControl() {
               onClick={() => deleteStream()}
               className="btn btn-outline-danger"
             >
-              Delete
+              DELETE
             </button>
           ) : null}
         </InputGroup>

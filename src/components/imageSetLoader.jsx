@@ -11,16 +11,16 @@ function ImageSetLoader({ category }) {
    
 
       for (let i = 0; i < 8; i++) {
-        if(category === "dogs"){     
+        if(category === "real estate"){     
         const img = await dogs.get().then((res) => {return res.data.message});
         arr.push(img);
 
-        }else if(category === "cats"){
+        }else if(category === "restaurant"){
             const img = await ImageFetch.get().then((res) => {
               return res.data.file;
             });
             arr.push(img);
-        }else if(category === "anime"){
+        }else if(category === "delivery"){
               const img = await anime.get().then((res)=>{
                 return res.data.url;
               })

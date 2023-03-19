@@ -323,8 +323,7 @@ export default function ChatCore() {
     if (recValue) {
       handleReceiveMessage();
     }
-  }, [recValue]);
-
+  }, [createStream, setName, setPlaybackId, setStreamKeyaccount, activeTopic, handleRoomData, roomData]);
  
   useEffect(()=>{
       localStorage.setItem(account, JSON.stringify(messages));
