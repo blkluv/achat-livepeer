@@ -13,7 +13,7 @@ import { useKeyContext } from "context/keyHandler";
 
 export default function AccessControl() {
 
-  const { setStreamKey, setPlaybackId, name ,setName, setStreamStatus } =
+  const { createStream, setPlaybackId, name ,setName, setStreamKey } =
     useKeyContext();
   const [url,setUrl] = useState()
   const [streamId,setStreamId] = useState()
@@ -38,7 +38,7 @@ export default function AccessControl() {
       setName(createdStream.name);
       setStreamId(createdStream.id);
       localStorage.setItem("streamKey", createdStream.streamKey);
-      setStreamKey(createdStream.streamKey);
+      createStream(createdStream.streamKey);
       localStorage.setItem("palybackId", createdStream.playbackId);
       setPlaybackId(createdStream.playbackId);
     }
@@ -47,7 +47,7 @@ export default function AccessControl() {
       createStream?.();
       setFlag(true);
       setName(localStorage.getItem("streamName"));
-      setStreamKey(localStorage.getItem("streamKey"));
+      createStream(localStorage.getItem("streamKey"));
       setPlaybackId(localStorage.getItem("palybackId"));
     }
   }, [createdStream]);
@@ -57,7 +57,7 @@ export default function AccessControl() {
     refetchInterval: (stream) => (!stream?.isActive ? 4000 : false),
   });
 
-  if(stream) setStreamStatus(stream.isActive)
+  if(stream) setStreamKey(stream.isActive)
 
   const isLoading = useMemo(() => status === "loading", [status]);
 
@@ -136,7 +136,7 @@ export default function AccessControl() {
               onClick={() => handleCopy()}
               className="btn btn-outline-danger"
             >
-              SHARE 📁
+              Share 📁
             </button>
           ) : null}
           {createdStream || flag ? (
@@ -144,7 +144,7 @@ export default function AccessControl() {
               onClick={() => deleteStream()}
               className="btn btn-outline-danger"
             >
-              DELETE
+              Delete
             </button>
           ) : null}
         </InputGroup>

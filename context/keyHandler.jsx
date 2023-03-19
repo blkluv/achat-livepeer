@@ -4,22 +4,22 @@ export const keyContext = React.createContext();
 
 export default function keyHandlerProvider({children}) {
 
-   const [streamKey, setStreamKey] = useState();
+   const [streamKey, createStream] = useState();
    const [playbackId, setPlaybackId] = useState();
    const [name,setName] = useState();
-   const [streamStatus,setStreamStatus] = useState();
+   const [streamStatus,setStreamKey] = useState();
 
   return (
     <keyContext.Provider
       value={{
         streamKey,
-        setStreamKey,
+        createStream,
         playbackId,
         setPlaybackId,
         name,
         setName,
         streamStatus,
-        setStreamStatus,
+        setStreamKey,
       }}
     >
       {children}
