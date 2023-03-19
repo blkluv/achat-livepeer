@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { DropdownButton, Dropdown, Alert, InputGroup, Row, Col, Form, Container } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,13 +27,13 @@ export default function ChatCore() {
         handleRoomData();
       }
     }
-  }, [messages]);
+  }, [messages, roomData, activeTopic, handleRoomData]);
 
   useEffect(() => {
     if (account) {
       localStorage.setItem(account + "room", JSON.stringify(roomData));
     }
-  }, [roomData]);
+  }, [roomData, account]);
 
   const isURL = (str) => {
     try {
@@ -43,6 +43,23 @@ export default function ChatCore() {
       return false;
     }
   };
+
+  const handleReceiveMessage = useCallback(
+    (data) => {
+      const message = JSON.parse(data.toString());
+      setMessages((messages) => [...messages, message]);
+    },
+    [setMessages]
+  );
+
+  useEffect(() => {
+    if (ipfs && ipfsReady) {
+      ipfs.pubsub.subscribe(activeTopic, handleReceiveMessage);
+      return () => {
+        ipfs.pubsub.unsubscribe(activeTopic, handleReceiveMessage);
+      };
+    }
+  }, [ipfs, ipfsReady, activeTopic, handleReceiveMessage]);
 
   // ...all other components and JSX return
 
@@ -54,49 +71,48 @@ export default function ChatCore() {
           {/* ...all other components */}
           <Row className="message-container">
             <Col className="message-list">
-              {messages
-                ? messages.map((message) => (
-                    <div
-                      key={message.timestamp}
-                      className={`message ${
-                        message.sender === "user" ? "sent" : "received"
-                      }`}
-                    >
-                      <span className="message-text">
-                        {isURL(message.text) ? (
-                          <a
-                            style={{ color: "white" }}
-                            href={message.text}
-                            rel="noreferrer"
-                            target="_blank"
-                            alt="lnk"
-                          >
-                            {message.text}
-                          </a>
-                        ) : (
-                          message.text
-                        )}
-                        <img
-                          style={{
-                            width: 15,
-                            height: 15,
-                            marginLeft: 3,
-                            marginTop: 10,
-                          }}
-                          src="/images/double-tick.png"
-                          alt="double tick"
-                        ></img>
-                      </span>
+              {messages &&
+                messages.map((message) => (
+                  <div
+                    key={message.timestamp}
+                    className={`message ${
+                      message.sender === "user" ? "sent" : "received"
+                    }`}
+                  >
+                    <span className="message-text">
+                      {isURL(message.text) ? (
+                        <a
+                          style={{ color: "white" }}
+                          href={message.text}
+                          rel="noreferrer"
+                          target="_blank"
+                          alt="lnk"
+                        >
+                          {message.text}
+                        </a>
+                      ) : (
+                        message.text
+                      )}
+                      <img
+                        style={{
+                          width: 15,
+                          height: 15,
+                          marginLeft: 3,
+                          marginTop: 10,
+                        }}
+                        src="/images/double-tick.png"
+                        alt="double tick"
+                      ></img>
+                    </span>
 
-                      <div
-                        style={{ fontSize: 13 }}
-                        className="align-self-end small text-muted"
-                      >
-                        {getTimeData(message.timestamp)}
-                      </div>
+                    <div
+                      style={{ fontSize: 13 }}
+                      className="align-self-end small text-muted"
+                    >
+                      {getTimeData(message.timestamp)}
                     </div>
-                  ))
-                : null}
+                  </div>
+                ))}
             </Col>
           </Row>
         </Container>
