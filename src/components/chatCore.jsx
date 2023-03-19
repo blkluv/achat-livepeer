@@ -22,12 +22,12 @@ export default function ChatCore() {
           room: activeTopic,
           data: messages,
         };
-        setRoomData([...roomData, rmdata]);
+        setRoomData((prevRoomData) => [...prevRoomData, rmdata]);
       } else {
         handleRoomData();
       }
     }
-  }, [messages, roomData, activeTopic, handleRoomData]);
+  }, [messages, roomData, activeTopic, handleRoomData, setRoomData]);
 
   useEffect(() => {
     if (account) {
@@ -47,7 +47,7 @@ export default function ChatCore() {
   const handleReceiveMessage = useCallback(
     (data) => {
       const message = JSON.parse(data.toString());
-      setMessages((messages) => [...messages, message]);
+      setMessages((prevMessages) => [...prevMessages, message]);
     },
     [setMessages]
   );
@@ -121,4 +121,3 @@ export default function ChatCore() {
     </>
   );
 }
-
