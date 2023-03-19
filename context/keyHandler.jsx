@@ -7,7 +7,7 @@ export default function keyHandlerProvider({children}) {
    const [streamKey, createStream] = useState();
    const [playbackId, setPlaybackId] = useState();
    const [name,setName] = useState();
-   const [streamStatus,setStreamKey] = useState();
+   const [streamStatus,setStreamStatus] = useState();
 
   return (
     <keyContext.Provider
@@ -19,7 +19,7 @@ export default function keyHandlerProvider({children}) {
         name,
         setName,
         streamStatus,
-        setStreamKey,
+        setStreamStatus,
       }}
     >
       {children}

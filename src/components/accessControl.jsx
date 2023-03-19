@@ -5,19 +5,14 @@ import InputGroup from "react-bootstrap/InputGroup";
 import copy from "copy-to-clipboard";
 import { ToastContainer, toast } from "react-toastify";
 
-
-
-import React,{ useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import { useKeyContext } from "context/keyHandler";
 
-
 export default function AccessControl() {
-
-  const { createStream, setPlaybackId, name ,setName, setStreamKey } =
-    useKeyContext();
-  const [url,setUrl] = useState()
-  const [streamId,setStreamId] = useState()
-  const [flag,setFlag]  = useState(false);
+  const { setPlaybackId, name, setName, setStreamKey } = useKeyContext();
+  const [url, setUrl] = useState();
+  const [streamId, setStreamId] = useState();
+  const [flag, setFlag] = useState(false);
   const [streamName, setStreamName] = useState();
 
   const {
@@ -50,25 +45,24 @@ export default function AccessControl() {
       createStream(localStorage.getItem("streamKey"));
       setPlaybackId(localStorage.getItem("palybackId"));
     }
-  }, [createdStream]);
+  }, [createdStream, createStream, setPlaybackId, setName]);
 
   const { data: stream } = useStream({
     streamId: createdStream?.id,
     refetchInterval: (stream) => (!stream?.isActive ? 4000 : false),
   });
 
-  if(stream) setStreamKey(stream.isActive)
+  if (stream) setStreamKey(stream.isActive);
 
   const isLoading = useMemo(() => status === "loading", [status]);
 
-  const deleteStream = ()=>{
+  const deleteStream = () => {
     localStorage.clear();
     window.location.reload();
-  }
+  };
 
   // async function deleteStream() {
   //   const url = `https://livepeer.com/api/stream/${streamId}`;
-    
   //   const response = await fetch(url, {
   //     method: "DELETE",
   //     headers: {
@@ -77,7 +71,6 @@ export default function AccessControl() {
   //     },
   //   });
 
-
   //   if (response.ok) {
   //     console.log(`Stream with ID ${streamId} deleted successfully.`);
   //   } else {
@@ -85,12 +78,10 @@ export default function AccessControl() {
   //   }
   // }
 
-  const handleCopy = ()=>{
-    copy(
-      `https://livepeercdn.studio/hls/${createdStream.playbackId}/index.m3u8`
-    );
+  const handleCopy = useCallback(() => {
+    copy(`https://livepeercdn.studio/hls/${createdStream.playbackId}/index.m3u8`);
     toast(`Playback Link Copied 🙆‍♀️ ${createdStream.playbackId}`);
-  }
+  }, [createdStream]);
 
   return (
     <>
