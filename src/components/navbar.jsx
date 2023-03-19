@@ -1,11 +1,10 @@
-import React,{useEffect} from 'react'
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link'
 import { useGlobalContext } from 'context/connectWallet';
 
 
 function Navbar() {
-
-  const {wallet} = useGlobalContext();
+  const [wallet, setWallet] = useState(null);
 
   useEffect(()=>{
     wallet()

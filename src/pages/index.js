@@ -19,41 +19,25 @@ export default function Home() {
           <div className={styles.inline-container}>
             <figure>
               <Link href="imagePage">
-                <img
-                  src="images/ADS1.jpg"
-                  className={`${styles['img-caller']} rounded`}
-                  alt="Responsive image"
-                />
+              <Image src="/images/ADS1.jpg" width={540} height={340} className="img-caller rounded" alt="Responsive image" />
                 <figcaption>ADS</figcaption>
               </Link>
             </figure>
             <figure>
               <Link href="chatIndex">
-                <img
-                  src="images/CHAT.jpg"
-                  className={`${styles['img-caller']} rounded`}
-                  alt="Responsive image"
-                />
+              <Image src="/images/CHAT.jpg" width={540} height={340} className="img-caller rounded" alt="Responsive image" />
                 <figcaption>CHAT</figcaption>
               </Link>
             </figure>
             <figure>
               <Link href="upLivepeer">
-                <img
-                  src="images/UPLOAD.jpg"
-                  className={`${styles['img-caller']} rounded`}
-                  alt="Responsive image"
-                />
+              <Image src="/images/UPLOAD.jpg" width={540} height={340} className="img-caller rounded" alt="Responsive image" />
                 <figcaption>UPLOAD COMMERCIAL</figcaption>
               </Link>
             </figure>
             <figure>
               <Link href="streamming">
-                <img
-                  src="images/LIVE.jpg"
-                  className={`${styles['img-caller']} rounded`}
-                  alt="Responsive image"
-                />
+              <Image src="/images/LIVE.jpg" width={540} height={340} className="img-caller rounded" alt="Responsive image" />
                 <figcaption>LIVE STREAM</figcaption>
               </Link>
             </figure>

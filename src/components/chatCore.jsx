@@ -53,7 +53,7 @@ export default function ChatCore() {
 
   
 
-  const handleRoomData = ()=>{
+  const handleRoomData = useCallback(() => {
 
     const rmdata = {
       room: activeTopic,
@@ -323,7 +323,7 @@ export default function ChatCore() {
     if (recValue) {
       handleReceiveMessage();
     }
-  }, [createStream, setName, setPlaybackId, setStreamKeyaccount, activeTopic, handleRoomData, roomData]);
+  }, [createStream, setName, setPlaybackId, wallet, setStreamKeyaccount, activeTopic, handleRoomData, roomData]);
  
   useEffect(()=>{
       localStorage.setItem(account, JSON.stringify(messages));
