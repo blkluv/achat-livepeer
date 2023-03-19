@@ -29,7 +29,7 @@ function Navbar() {
             aria-controls="pills-home"
             aria-selected="true"
           >
-            <code style={{ fontSize: 20, color: "white" }}>Home</code>
+            <code style={{ fontSize: 20, color: "white" }}>HOME</code>
           </a>
         </li>
         <li className="nav-item">
@@ -42,7 +42,7 @@ function Navbar() {
             aria-controls="pills-profile"
             aria-selected="false"
           >
-            <code style={{ fontSize: 20, color: "white" }}>downloads</code>
+            <code style={{ fontSize: 20, color: "white" }}>DOWNLOADS</code>
           </a>
         </li>
         <li className="nav-item">
@@ -55,12 +55,12 @@ function Navbar() {
             aria-controls="pills-contact"
             aria-selected="false"
           >
-            <code style={{ fontSize: 20, color: "white" }}>category</code>
+            <code style={{ fontSize: 20, color: "white" }}>CHANNEL</code>
           </a>
         </li>
         <li>
           <button className="btn btn-primary walletConnect" onClick={()=>wallet()}>
-            <code style={{ fontSize: 20, color: "white" }}>connect wallet</code>
+            <code style={{ fontSize: 20, color: "white" }}>CONNECT</code>
           </button>
         </li>
       </ul>
