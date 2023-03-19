@@ -42,7 +42,7 @@ function Navbar() {
             aria-controls="pills-profile"
             aria-selected="false"
           >
-            <code style={{ fontSize: 20, color: "white" }}>DOWNLOADS</code>
+            <code style={{ fontSize: 20, color: "white" }}>📥</code>
           </a>
         </li>
         <li className="nav-item">
@@ -55,7 +55,7 @@ function Navbar() {
             aria-controls="pills-contact"
             aria-selected="false"
           >
-            <code style={{ fontSize: 20, color: "white" }}>CHANNEL</code>
+            <code style={{ fontSize: 20, color: "white" }}>C📱</code>
           </a>
         </li>
         <li>
