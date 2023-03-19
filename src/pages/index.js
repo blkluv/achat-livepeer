@@ -6,57 +6,55 @@ export default function Home() {
   return (
     <>
       <main>
-        <div className="container">
+        <div className={styles.container}>
           {/* Add H1 header with logo text and TV emoji */}
-          <h1>
+          <h1 className={styles.logo}>
             <span role="img" aria-label="TV">
-            🅰️🪙📺
+              🅰️🪙📺
             </span>
             ARVRTISE NFTV
           </h1>
           {/* End of H1 header */}
 
-          <div className="inline-container">
+          <div className={styles.inline-container}>
             <figure>
               <Link href="imagePage">
                 <img
                   src="images/ADS1.jpg"
-                  className="img-caller rounded"
+                  className={`${styles['img-caller']} rounded`}
                   alt="Responsive image"
                 />
-                <figcaption style={{ marginLeft: 240 }}>ADS</figcaption>
+                <figcaption>ADS</figcaption>
               </Link>
             </figure>
             <figure>
               <Link href="chatIndex">
                 <img
                   src="images/CHAT.jpg"
-                  className="img-caller rounded"
+                  className={`${styles['img-caller']} rounded`}
                   alt="Responsive image"
                 />
-                <figcaption style={{ marginLeft: 240 }}>CHAT</figcaption>
+                <figcaption>CHAT</figcaption>
               </Link>
             </figure>
             <figure>
               <Link href="upLivepeer">
                 <img
                   src="images/UPLOAD.jpg"
-                  className="img-caller rounded"
+                  className={`${styles['img-caller']} rounded`}
                   alt="Responsive image"
                 />
-                <figcaption style={{ marginLeft: 170 }}>
-                  UPLOAD COMMERCIAL
-                </figcaption>
+                <figcaption>UPLOAD COMMERCIAL</figcaption>
               </Link>
             </figure>
             <figure>
               <Link href="streamming">
                 <img
                   src="images/LIVE.jpg"
-                  className="img-caller rounded"
+                  className={`${styles['img-caller']} rounded`}
                   alt="Responsive image"
                 />
-                <figcaption style={{ marginLeft: 230 }}>LIVE STREAM</figcaption>
+                <figcaption>LIVE STREAM</figcaption>
               </Link>
             </figure>
           </div>
