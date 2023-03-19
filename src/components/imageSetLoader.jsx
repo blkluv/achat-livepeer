@@ -1,6 +1,6 @@
 import ImageFetch, { dogs, anime } from "../pages/api/imagesFetch";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import Image from "next/image"
 
 function ImageSetLoader({ category }) {
   const [url, setUrl] = useState([]);
