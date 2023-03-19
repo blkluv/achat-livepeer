@@ -1,13 +1,12 @@
 {
-  "name": "nftv",
+  "name": "allme",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "clean": "rimraf .next"
+    "lint": "next lint"
   },
   "dependencies": {
     "@chainsafe/libp2p-gossipsub": "^6.2.0",
@@ -56,8 +55,6 @@
     "libp2p": "^0.42.2",
     "libp2p-mplex": "^0.10.7",
     "libp2p-webrtc-star": "^0.25.0",
-    "libp2p-websockets": "^0.16.2",
-    "css-loader": "latest",
-    "postcss-loader": "latest",
-    "postcss-preset-env": "latest",
-    "autoprefixer":
+    "libp2p-websockets": "^0.16.2"
+  }
+}
